@@ -1,7 +1,7 @@
 Twilight Fell,
 A Flappy Bird reference game
 
-Goal: Reach the highest score and avoiding the obstacles
+Goal: Reach the highest score and avoid the obstacles
 
 Control: Space for jump
 
@@ -13,4 +13,4 @@ Screenshots:
 
 ![Enemy appearance](https://raw.githubusercontent.com/kurrorro/Twilight-Fell/main/twilight_fell_3.png)
 
-![Game over](
+![Game over](https://raw.githubusercontent.com/kurrorro/Twilight-Fell/main/twilight_fell_4.png)
