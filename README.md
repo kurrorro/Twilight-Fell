@@ -11,4 +11,6 @@ Screenshots:
 
 ![Heart appearance](https://raw.githubusercontent.com/kurrorro/Twilight-Fell/main/twilight_fell_2.png)
 
-![Enemy appearance](
+![Enemy appearance](https://raw.githubusercontent.com/kurrorro/Twilight-Fell/main/twilight_fell_3.png)
+
+![Game over](
