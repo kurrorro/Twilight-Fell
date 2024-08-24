@@ -1,32 +1,30 @@
-import pgzrun
+import pgzrun, random
 from pgzero.builtins import Actor, animate, keyboard
 
 import pgzero.screen
 screen : pgzero.screen.Screen
 
-import random
-
-#jendela game
+#game window
 WIDTH = 500
 HEIGHT = 500
 
 TITLE = "Twilight Fell"
 FPS = 30
 
-#posisi
-a = random.randint(50, 100) #pillar1
-b = random.randint(400, 450) #pillar2
-g = random.randint(50, 100) #pillar3
-h = random.randint(400, 450) #pillar4
-i = random.randint(50, 100) #pillar5
-j = random.randint(400, 450) #pillar6
-d = random.randint(220, 280) #disc
-e = random.randint(220, 280) #heart
+#position for the object
+a = random.randint(50, 100) # pillar1
+b = random.randint(400, 450) # pillar2
+g = random.randint(50, 100) # pillar3
+h = random.randint(400, 450) # pillar4
+i = random.randint(50, 100) # pillar5
+j = random.randint(400, 450) # pillar6
+d = random.randint(220, 280) # disc
+e = random.randint(220, 280) # heart
 
-#pemanggilan objek
+#calling the object randomly
 f = random.randint(1, 500)
 
-#objek-objek
+#initializing object
 bg = Actor('rsz_1bg')
 pillar1 = Actor('rsz_1pillar_up', (550, a))
 pillar2 = Actor('rsz_1pillar_down', (550, b))
@@ -38,11 +36,11 @@ char = Actor('chara', (120, 250))
 heart = Actor('rsz_heart', (550, e))
 shuriken = Actor('rsz_shuriken', (550, 250))
 disc = Actor('rsz_disc', (550, d))
-speed = 5 #kecepatan
-new_image = 'chara' #chara melompat
-hati = Actor('rsz_heart', (430, 40)) #jumlah nyawa
-nyawa = 50 #jumlah nyawa
-score = 0 #skor permainan
+speed = 5 #speed
+new_image = 'chara' #jump
+hati = Actor('rsz_heart', (430, 40))
+nyawa = 50 #life
+score = 0 #score
 game_over = 0 #game over
 
 #draw
@@ -111,7 +109,7 @@ def pipe6():
         pillar6.x = WIDTH + 75
         pillar6.y = random.randint(400, 450)
         
-#musuh
+#enemy aka the shuriken
 def enemy():
     global speed
     global f
@@ -123,7 +121,7 @@ def enemy():
         shuriken.x = WIDTH + 20
         f = random.randint(1, 5)
 
-#nyawa
+#life, collecting heart
 def life():
     global f
     if heart.x > -20:
@@ -143,6 +141,7 @@ def life():
         #disc.x = WIDTH + 20
         #disc.y = random.randint(220, 280)
         #f = random.randint(1, 5)
+#ITEM disc can be collected and used to claim new skin, but it's still under construction :D
         
 #update
 def update(dt):
@@ -164,7 +163,7 @@ def update(dt):
     collide()
     gameover()
 
-#tabrakan
+#colliding with object
 def collide():
     global nyawa
     global score
@@ -175,20 +174,20 @@ def collide():
         heart.x = -15
     if char.colliderect(pillar1) or char.colliderect(pillar2) or char.colliderect(pillar3) or char.colliderect(pillar4) or char.colliderect(pillar5) or char.colliderect(pillar6):
         nyawa -= 1
-    #penambahan skor
+    #score added
     if pillar1.x == 100 or pillar2.x == 100 or pillar3.x == 100 or pillar4.x == 100 or pillar5.x == 100 or pillar6.x == 100:
         score += 1
-    #karakter jatuh
+    #character fall
     if char.y > 500 or char.y < 0:
         nyawa -= 1
 
-#permainan berakhir
+#game over, means ur ded
 def gameover():
     global game_over
     if nyawa == 0:
         game_over = 1
     
-#kontrol
+#keyboard control
 def on_key_down(key):
     global new_image
     if keyboard.space or keyboard.up or keyboard.w:
@@ -207,4 +206,4 @@ def on_key_down(key):
             char.image = 'chara'
             new_image = 'chara'
 
-pgzrun.go()
+pgzrun.go() 
