@@ -1,5 +1,5 @@
 Twilight Fell,
-A Flappy Bird reference game
+a Flappy Bird reference game
 
 Goal: Reach the highest score and avoid the obstacles
 
